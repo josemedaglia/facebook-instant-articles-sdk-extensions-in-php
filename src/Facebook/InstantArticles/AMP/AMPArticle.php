@@ -278,7 +278,7 @@ class AMPArticle extends Element implements InstantArticleInterface
         $this->ampHeader->genArticlePublishDate($this->dateFormat);
 
         // Add the analytics code
-        $analytics = $this->buildAnalytics();
+        $analytics = $this->buildAnalytics($context);
         if ($analytics !== null) {
             $head->appendChild($this->buildCustomElementScriptEntry('amp-analytics', 'https://cdn.ampproject.org/v0/amp-analytics-0.1.js', $context));
             $body->insertBefore($analytics, $body->firstChild);
