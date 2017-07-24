@@ -427,7 +427,7 @@ class AMPArticle extends Element implements InstantArticleInterface
                     $childElement->setAttribute('class', $context->buildCssClass('related-articles'));
                     // TODO RelatedArticles is not covered yet, since AMP didn't get a good structure for it up to date.
                 } else if (Type::is($child, Analytics::getClassName())) {
-                    if ($this->buildAnalytics() === null) {
+                    if ($this->buildAnalytics($context) === null) {
                         $context->addWarning(
                             'Your Instant Article has analytics code, and you didn\'t provide an AMP analytics json. Your data will not be tracked. See the documentation at https://www.ampproject.org/docs/reference/components/amp-analytics on how to build your analytics component for AMP.',
                             $child
