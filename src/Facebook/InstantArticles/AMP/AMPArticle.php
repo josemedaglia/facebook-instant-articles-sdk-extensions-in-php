@@ -435,6 +435,10 @@ class AMPArticle extends Element implements InstantArticleInterface
                     }
                     continue;
                 } else if (Type::is($child, Ad::getClassName())) {
+                    if (!$containsIframe) {
+                        $containsIframe = true;
+                        $context->getHead()->appendChild($this->buildCustomElementScriptEntry('amp-iframe', 'https://cdn.ampproject.org/v0/amp-iframe-0.1.js', $context));
+                    }
                     $childElement = $this->observer->applyFilters('IA_AD', $this->buildAd($child, $context, 'ad'), $child, $context);
                 } else {
                     // Not a know element, bypasses it
